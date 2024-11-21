@@ -960,26 +960,20 @@ function MacLib:Window(Settings)
 
 	local DepthOfField
 
-	for _,v in pairs(game:GetService("Lighting"):GetChildren()) do
-		if not v:IsA("DepthOfFieldEffect") and v:HasTag(".") then
-			DepthOfField = Instance.new('DepthOfFieldEffect')
-			DepthOfField.FarIntensity = 0
-			DepthOfField.FocusDistance = 51.6
-			DepthOfField.InFocusRadius = 50
-			DepthOfField.NearIntensity = 1
+	for _, v in pairs(game:GetService("Lighting"):GetChildren()) do
+		if not v:IsA("BlurEffect") and v:HasTag(".") then
+			DepthOfField = Instance.new('BlurEffect')
+			DepthOfField.Size = 14
 			DepthOfField.Name = HS:GenerateGUID(true)
 			DepthOfField:AddTag(".")
-		elseif v:IsA("DepthOfFieldEffect") and v:HasTag(".") then
+		elseif v:IsA("BlurEffect") and v:HasTag(".") then
 			DepthOfField = v
 		end
 	end
 
 	if not DepthOfField then
-		DepthOfField = Instance.new('DepthOfFieldEffect')
-		DepthOfField.FarIntensity = 0
-		DepthOfField.FocusDistance = 51.6
-		DepthOfField.InFocusRadius = 50
-		DepthOfField.NearIntensity = 1
+		DepthOfField = Instance.new('BlurEffect')
+		DepthOfField.Size = 14
 		DepthOfField.Name = HS:GenerateGUID(true)
 		DepthOfField:AddTag(".")
 	end
